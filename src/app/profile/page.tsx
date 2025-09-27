@@ -134,9 +134,11 @@ export default function DashboardPage() {
           </h2>
           
           {/* Bouton Commencer */}
-          <button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-4 px-12 rounded-xl text-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl animate-pulse-glow">
-            Commencer
-          </button>
+          <Link href="/missions">
+            <button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-4 px-12 rounded-xl text-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl animate-pulse-glow">
+              Commencer
+            </button>
+          </Link>
         </div>
       </div>
     </div>
