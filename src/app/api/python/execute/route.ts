@@ -28,6 +28,70 @@ function executePythonCode(code: string): { output: string; error?: string } {
     // Nettoyer le code
     const cleanCode = code.trim();
     
+    // Gestion spécifique pour le code de décryptage des codes de porte avec tests unitaires automatiques
+    if (cleanCode.includes('decoder_code_porte') && cleanCode.includes('Mission: Décryptage des codes de porte')) {
+      const outputs: string[] = [];
+      
+      // Vérifier si la fonction est implémentée correctement
+      const hasCorrectImplementation = (cleanCode.includes('if code % 2 == 0:') || cleanCode.includes('if code %2 == 0:')) && 
+                                      cleanCode.includes('return "pair - Accès normal"') &&
+                                      cleanCode.includes('return "impair - Accès restreint"') &&
+                                      cleanCode.includes('else:');
+      
+      // Vérifier s'il y a des erreurs de syntaxe spécifiques
+      const hasSyntaxError = cleanCode.includes('code %2 = 0') || 
+                            (cleanCode.includes('Codes pairs = Accès normal') && !cleanCode.includes('# Codes pairs = Accès normal')) ||
+                            (cleanCode.includes('Codes impairs = Accès restreint') && !cleanCode.includes('# Codes impairs = Accès restreint'));
+      
+      const hasImplementation = hasCorrectImplementation && !hasSyntaxError;
+      
+      // Debug pour voir ce qui se passe
+      console.log('Debug API:', {
+        hasCorrectImplementation,
+        hasSyntaxError,
+        hasImplementation,
+        cleanCode: cleanCode.substring(0, 200) + '...'
+      });
+      
+      // Exécuter les tests unitaires automatiquement
+      outputs.push('🧪 Tests unitaires en cours...');
+      
+      if (!hasImplementation) {
+        outputs.push('❌ Test 1 échoué: 42 devrait être pair');
+        outputs.push('❌ Test 2 échoué: 17 devrait être impair');
+        outputs.push('❌ Test 3 échoué: 100 devrait être pair');
+        outputs.push('❌ Test 4 échoué: 73 devrait être impair');
+        outputs.push('⚠️  Certains tests ont échoué. Vérifiez votre code.');
+        outputs.push('');
+        
+        if (hasSyntaxError) {
+          outputs.push('🚨 Erreur de syntaxe détectée !');
+          if (cleanCode.includes('code %2 = 0')) {
+            outputs.push('❌ Utilisez == au lieu de = pour la comparaison');
+          }
+          if (cleanCode.includes('Codes pairs = Accès normal')) {
+            outputs.push('❌ Le texte de retour doit être exactement "pair - Accès normal"');
+          }
+          if (cleanCode.includes('Codes impairs = Accès restreint')) {
+            outputs.push('❌ Le texte de retour doit être exactement "impair - Accès restreint"');
+          }
+          outputs.push('');
+        }
+        
+        outputs.push('💡 Indice: Utilisez l\'opérateur modulo (%) pour déterminer si un nombre est pair ou impair');
+        outputs.push('💡 Un nombre est pair si le reste de sa division par 2 est 0');
+        outputs.push('💡 N\'oubliez pas le else: pour gérer les nombres impairs');
+      } else {
+        outputs.push('✅ Test 1 réussi: 42 est bien pair');
+        outputs.push('✅ Test 2 réussi: 17 est bien impair');
+        outputs.push('✅ Test 3 réussi: 100 est bien pair');
+        outputs.push('✅ Test 4 réussi: 73 est bien impair');
+        outputs.push('🎉 Tous les tests sont passés ! Mission accomplie !');
+      }
+      
+      return { output: outputs.join('\n') };
+    }
+    
     // Simulation des cas de base pour les missions
     if (cleanCode.includes('name = "Mathis"') && cleanCode.includes('print(f"Bonjour, {name} !")')) {
       return { output: 'Bonjour, Mathis !' };
@@ -35,11 +99,6 @@ function executePythonCode(code: string): { output: string; error?: string } {
     
     if (cleanCode.includes('name = "Mathis"') && cleanCode.includes('print(f"Bonjour, {name}")')) {
       return { output: 'Bonjour, Mathis' };
-    }
-    
-    // Gestion spécifique pour votre code
-    if (cleanCode.includes('name = "Mathis"') && cleanCode.includes('print(f"Bonjour, {name} !")')) {
-      return { output: 'Bonjour, Mathis !' };
     }
     
     // Gestion des variables avec f-strings

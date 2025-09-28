@@ -1,8 +1,4 @@
 {
-  "/login/page": "app/login/page.js",
-  "/settings/page": "app/settings/page.js",
-  "/profile/page": "app/profile/page.js",
-  "/page": "app/page.js",
   "/missions/page": "app/missions/page.js",
   "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
   "/api/python/execute/route": "app/api/python/execute/route.js"

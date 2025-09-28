@@ -616,6 +616,202 @@
   }
 }
 
+/* Animations Pixel Art */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+@keyframes orbit {
+  0% { transform: rotate(0deg) translateX(20px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(20px) rotate(-360deg); }
+}
+
+@keyframes pixel-bounce {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-2px); }
+}
+
+@keyframes pixel-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+@keyframes pixel-glow {
+  0%, 100% { 
+    box-shadow: 0 0 2px rgba(255, 255, 255, 0.3);
+  }
+  50% { 
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 0 12px rgba(255, 255, 255, 0.4);
+  }
+}
+
+/* Animations du héros cyberpunk */
+@keyframes walk {
+  0%, 100% { 
+    transform: translateX(0px) translateY(0px);
+  }
+  25% { 
+    transform: translateX(2px) translateY(-1px);
+  }
+  50% { 
+    transform: translateX(4px) translateY(0px);
+  }
+  75% { 
+    transform: translateX(2px) translateY(1px);
+  }
+}
+
+@keyframes arm-swing {
+  0%, 100% { 
+    transform: rotate(0deg);
+  }
+  50% { 
+    transform: rotate(15deg);
+  }
+}
+
+@keyframes leg-walk {
+  0%, 100% { 
+    transform: translateY(0px);
+  }
+  50% { 
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes drone-float {
+  0%, 100% { 
+    transform: translateY(0px) translateX(0px);
+  }
+  25% { 
+    transform: translateY(-8px) translateX(4px);
+  }
+  50% { 
+    transform: translateY(-4px) translateX(8px);
+  }
+  75% { 
+    transform: translateY(-12px) translateX(4px);
+  }
+}
+
+@keyframes cyber-glow {
+  0%, 100% { 
+    box-shadow: 0 0 4px rgba(0, 255, 255, 0.3);
+  }
+  50% { 
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.4);
+  }
+}
+
+@keyframes hologram-flicker {
+  0%, 100% { 
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.3;
+    transform: scale(1.1);
+  }
+}
+
+/* Animations cyberpunk avancées */
+@keyframes grid-move {
+  0% { 
+    transform: translateX(0px) translateY(0px);
+  }
+  100% { 
+    transform: translateX(20px) translateY(20px);
+  }
+}
+
+@keyframes scan-line {
+  0% { 
+    transform: translateX(-100%);
+  }
+  100% { 
+    transform: translateX(100%);
+  }
+}
+
+@keyframes fade-in {
+  0% { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out;
+}
+
+/* Coloration syntaxique Python personnalisée */
+.python-editor {
+  position: relative;
+}
+
+.python-editor textarea {
+  background: transparent !important;
+  color: transparent !important;
+  caret-color: #00ff00 !important;
+  z-index: 2;
+  position: relative;
+}
+
+.python-editor .syntax-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 16px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+
+/* Couleurs pour la syntaxe Python */
+.syntax-comment {
+  color: #6A9955; /* Vert pour les commentaires */
+}
+
+.syntax-keyword {
+  color: #569CD6; /* Bleu pour les mots-clés */
+}
+
+.syntax-string {
+  color: #CE9178; /* Orange pour les chaînes */
+}
+
+.syntax-number {
+  color: #B5CEA8; /* Vert clair pour les nombres */
+}
+
+.syntax-function {
+  color: #DCDCAA; /* Jaune pour les fonctions */
+}
+
+.syntax-variable {
+  color: #9CDCFE; /* Bleu clair pour les variables */
+}
+
+.syntax-operator {
+  color: #D4D4D4; /* Gris pour les opérateurs */
+}
+
+.syntax-bracket {
+  color: #FFD700; /* Or pour les parenthèses */
+}
+
 .animate-fade-in {
   animation: fade-in 0.5s ease-out;
 }
